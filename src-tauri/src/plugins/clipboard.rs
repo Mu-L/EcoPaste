@@ -1,4 +1,4 @@
-use crate::core::tray::Tray;
+use super::tray::update_tray_menu;
 use clipboard_rs::{
     common::RustImage, Clipboard, ClipboardContent, ClipboardContext, ClipboardHandler,
     ClipboardWatcher, ClipboardWatcherContext, ContentFormat, RustImageData, WatcherShutdown,
@@ -69,7 +69,7 @@ fn toggle_listening(app_handle: AppHandle) {
 
     drop(is_listening);
 
-    Tray::update_menu(&app_handle);
+    update_tray_menu(&app_handle);
 }
 
 #[command]
@@ -135,7 +135,7 @@ async fn has_html(manager: State<'_, ClipboardManager>) -> Result<bool, String> 
 }
 
 #[command]
-async fn has_rich_text(manager: State<'_, ClipboardManager>) -> Result<bool, String> {
+async fn has_rtf(manager: State<'_, ClipboardManager>) -> Result<bool, String> {
     Ok(manager.has(ContentFormat::Rtf))
 }
 
@@ -220,7 +220,7 @@ async fn read_html(manager: State<'_, ClipboardManager>) -> Result<String, Strin
 }
 
 #[command]
-async fn read_rich_text(manager: State<'_, ClipboardManager>) -> Result<String, String> {
+async fn read_rtf(manager: State<'_, ClipboardManager>) -> Result<String, String> {
     manager
         .context
         .lock()
@@ -283,15 +283,22 @@ async fn write_html(
 }
 
 #[command]
-async fn write_rich_text(
+async fn write_rtf(
     manager: State<'_, ClipboardManager>,
-    value: String,
+    text: String,
+    rtf: String,
 ) -> Result<(), String> {
+    let mut contents = vec![ClipboardContent::Rtf(rtf)];
+
+    if cfg!(not(target_os = "macos")) {
+        contents.push(ClipboardContent::Text(text))
+    }
+
     manager
         .context
         .lock()
         .map_err(|err| err.to_string())?
-        .set_rich_text(value)
+        .set(contents)
         .map_err(|err| err.to_string())
 }
 
@@ -318,17 +325,17 @@ pub fn init() -> TauriPlugin<Wry> {
             has_files,
             has_image,
             has_html,
-            has_rich_text,
+            has_rtf,
             has_text,
             read_files,
             read_image,
             read_html,
-            read_rich_text,
+            read_rtf,
             read_text,
             write_files,
             write_image,
             write_html,
-            write_rich_text,
+            write_rtf,
             write_text,
         ])
         .build()

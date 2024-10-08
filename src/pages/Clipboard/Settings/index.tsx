@@ -7,14 +7,23 @@ import AutoPaste from "./components/AutoPaste";
 import SearchPosition from "./components/SearchPosition";
 import WindowPosition from "./components/WindowPosition";
 
-const Clipboard = () => {
-	const { audio, search, content } = useSnapshot(clipboardStore);
+const ClipboardSettings = () => {
+	const { window, audio, search, content } = useSnapshot(clipboardStore);
 	const { t } = useTranslation();
 
 	return (
 		<>
 			<ProList header={t("preference.clipboard.window_settings.title")}>
 				<WindowPosition />
+
+				<ProSwitch
+					title={t("preference.clipboard.window_settings.label.back_top")}
+					description={t("preference.clipboard.window_settings.hints.back_top")}
+					value={window.backTop}
+					onChange={(value) => {
+						clipboardStore.window.backTop = value;
+					}}
+				/>
 			</ProList>
 
 			{!isLinux() && (
@@ -70,12 +79,14 @@ const Clipboard = () => {
 				<ProSwitch
 					title={t("preference.clipboard.content_settings.label.image_ocr")}
 					description={
-						<>
-							{t("preference.clipboard.content_settings.hints.image_ocr")}{" "}
-							<Typography.Link href="https://github.com/tesseract-ocr/tesseract">
-								tesseract
-							</Typography.Link>
-						</>
+						isLinux() && (
+							<>
+								{t("preference.clipboard.content_settings.hints.image_ocr")}{" "}
+								<Typography.Link href="https://github.com/tesseract-ocr/tesseract">
+									tesseract
+								</Typography.Link>
+							</>
+						)
 					}
 					value={content.ocr}
 					onChange={(value) => {
@@ -88,9 +99,22 @@ const Clipboard = () => {
 					description={t(
 						"preference.clipboard.content_settings.hints.copy_as_plain",
 					)}
-					value={content.copyPlainText}
+					value={content.copyPlain}
 					onChange={(value) => {
-						clipboardStore.content.copyPlainText = value;
+						clipboardStore.content.copyPlain = value;
+					}}
+				/>
+
+				<ProSwitch
+					title={t(
+						"preference.clipboard.content_settings.label.paste_as_plain",
+					)}
+					description={t(
+						"preference.clipboard.content_settings.hints.paste_as_plain",
+					)}
+					value={content.pastePlain}
+					onChange={(value) => {
+						clipboardStore.content.pastePlain = value;
 					}}
 				/>
 			</ProList>
@@ -98,4 +122,4 @@ const Clipboard = () => {
 	);
 };
 
-export default Clipboard;
+export default ClipboardSettings;

@@ -18,7 +18,11 @@
 					"window_position": "クリップボード位置",
 					"window_position_remember": "位置を記憶する",
 					"window_position_follow": "マウスに従う",
-					"window_position_center": "スクリーンセンター"
+					"window_position_center": "スクリーンセンター",
+					"back_top": "トップページに戻る"
+				},
+				"hints": {
+					"back_top": "ウィンドウがアクティブになったら、一番上までスクロールし、最初のバーを選択する。"
 				}
 			},
 			"audio_settings": {
@@ -37,8 +41,8 @@
 					"position_bottom": "ボトム"
 				},
 				"hints": {
-					"default_focus": "クリップボードを開くとき、カーソルは検索ボックスにあります",
-					"auto_clear": "クリップボードを開いたときに検索ボックスの内容を自動で削除"
+					"default_focus": "ウィンドウがアクティブになると、デフォルトで検索ボックスにフォーカスを当てる。",
+					"auto_clear": "ウィンドウがアクティブになったときに検索ボックスの内容をクリアする"
 				}
 			},
 			"content_settings": {
@@ -48,12 +52,14 @@
 					"auto_paste_single": "シングルクリック",
 					"auto_paste_double": "ダブルクリック",
 					"image_ocr": "画像 OCR",
-					"copy_as_plain": "テキストでコピーする"
+					"copy_as_plain": "プレーンテキストとしてコピー",
+					"paste_as_plain": "プレーンテキストとして貼り付ける"
 				},
 				"hints": {
 					"auto_paste": "左クリック時に、内容を素早く入力フィールドに貼り付けます",
-					"image_ocr": "システムOCRのサポートが不十分な場合のアプリケーションクラッシュを回避するために役立ちます。Linuxユーザーは別途ダウンロードが必要な場合があります。",
-					"copy_as_plain": "リッチテキストやHTML形式をコピーする際に、プレーンテキストのみを保持します"
+					"image_ocr": "注意：ご使用前に必ずダウンロードしてください。",
+					"copy_as_plain": "リッチテキストとHTML形式は、コピーしてもプレーンテキストの内容しか保持しない",
+					"paste_as_plain": "リッチテキストとHTMLの書式設定は、貼り付け時にプレーンテキストの内容だけを保持する"
 				}
 			}
 		},
@@ -61,9 +67,9 @@
 			"history": {
 				"title": "履歴",
 				"button": {
-					"clear": "履歴をクリア",
-					"clear_confirm": "確認",
-					"clear_cancel": "キャンセル"
+					"goto_delete": "履歴を削除",
+					"confirm_delete": "確認",
+					"cancel_delete": "キャンセル"
 				},
 				"label": {
 					"duration": "保持期間",
@@ -73,11 +79,21 @@
 						"month": "月",
 						"year": "年"
 					},
-					"clear_confirm_title": "履歴をクリア"
+					"delete_title": "履歴を削除",
+					"time_range": "時間範囲",
+					"time_range_opt": {
+						"last_hour": "過去 1 時間",
+						"last_24_hours": "過去 24 時間",
+						"last_7_days": "過去 7 日間",
+						"last_30_days": "過去 30 日間",
+						"unlimited": "無制限",
+						"custom": "カスタム"
+					},
+					"include_favorite": "お気に入りも削除"
 				},
 				"hints": {
-					"duration": "0 は永続保持を意味します",
-					"clear_confirm": "すべての履歴（お気に入りを含む）をクリアしてもよろしいですか？"
+					"duration": "0 を入力すると永久保存され、削除時にお気に入りが保持されます",
+					"delete_success": "削除が成功しました"
 				}
 			}
 		},
@@ -105,7 +121,8 @@
 				"title": "ソフト設定",
 				"label": {
 					"auto_start": "ログイン時に起動",
-					"auto_update": "自動更新チェック"
+					"show_menubar_icon": "メニューバーアイコンを表示する",
+					"show_taskbar_icon": "タスクバーアイコンを表示する"
 				}
 			},
 			"appearance_settings": {
@@ -116,6 +133,19 @@
 					"theme_auto": "システムに従う",
 					"theme_light": "ライト",
 					"theme_dark": "ダーク"
+				},
+				"hints": {
+					"theme": "注意: テーマを切り替えると、アプリは自動的に再起動します。"
+				}
+			},
+			"app_update": {
+				"title": "アプリケーションの更新",
+				"label": {
+					"auto_update": "自動更新チェック",
+					"update_beta": "ベータ体験に参加する"
+				},
+				"hints": {
+					"update_beta": "不安定でもベータ版アップデートを受け取れる"
 				}
 			}
 		},
@@ -124,31 +154,36 @@
 				"title": "ショートカットキー",
 				"label": {
 					"open_clipboard": "クリップボードを開く",
-					"open_settings": "クリップボード設定を開く"
+					"open_settings": "クリップボード設定を開く",
+					"quick_paste": "クイックペースト",
+					"paste_as_plain": "プレーンテキストとして貼り付け"
+				},
+				"hints": {
+					"quick_paste": "ウィンドウを隠す際、数字キーの組み合わせで最初の9項目を素早く貼り付ける",
+					"paste_as_plain": "内容をプレーンテキストまたは OCR テキストとして貼り付け"
 				}
 			}
 		},
 		"data_backup": {
-			"import_export": {
-				"title": "データのインポート/エクスポート",
+			"storage_settings": {
+				"title": "ストレージ設定",
 				"label": {
-					"storage_dir": "保存先パス",
-					"import_confirm_title": "導入に関する注意事項",
-					"export_confirm_title": "輸出に関する注意事項"
-				},
-				"button": {
-					"open_dir": "ディレクトリを開く",
-					"import": "データのインポート",
-					"export": "データをエクスポート",
-					"confirm_export": "エクスポートを開始",
-					"confirm": "インポートを開始",
-					"cancel": "キャンセル"
+					"data_storage_path": "データ保存パス",
+					"log_storage_path": "ログ保存パス"
 				},
 				"hints": {
-					"import_confirm": "インポートされたデータはすべての設定とすべてのクリップボード履歴データを完全に上書きします。インポートしてもよろしいですか？",
-					"export_confirm": "エクスポートされたデータには、すべての設定とすべてのクリップボード履歴データが含まれます。",
-					"importing": "インポート中",
-					"exporting": "エクスポート中",
+					"custom_path": "カスタマイズ",
+					"default_path": "デフォルトに戻す",
+					"change_success": "変更成功"
+				}
+			},
+			"import_export": {
+				"title": "インポートとエクスポート",
+				"button": {
+					"import": "データをインポート",
+					"export": "データをエクスポート"
+				},
+				"hints": {
 					"import_success": "インポート成功"
 				}
 			}
@@ -180,11 +215,7 @@
 				"download_image": "画像をダウンロード",
 				"show_in_finder": "Finder で表示",
 				"show_in_file_explorer": "ファイルエクスプローラで表示",
-				"delete": "削除",
-				"delete_above": "上記を削除",
-				"delete_below": "以下を削除 ",
-				"delete_other": "その他を削除",
-				"delete_all": "すべて削除"
+				"delete": "削除"
 			}
 		},
 		"label": {
@@ -193,21 +224,20 @@
 				"text": "テキスト",
 				"image": "画像",
 				"files": "ファイル",
-				"collection": "コレクション"
+				"favorite": "コレクション"
 			},
 			"link": "ウェブリンク",
 			"email": "メール",
 			"color": "カラー",
 			"plain_text": "プレーンテキスト",
-			"rich_text": "リッチテキスト",
+			"rtf": "リッチテキスト",
 			"html": "HTML",
 			"image": "画像",
 			"n_files": "{{0}} ファイル（フォルダ）",
 			"n_chars": "{{0}} 文字"
 		},
 		"hints": {
-			"search_placeholder": "検索",
-			"delete_confirm": "この履歴を削除してもよろしいですか？"
+			"search_placeholder": "検索"
 		}
 	},
 	"component": {
@@ -230,19 +260,7 @@
 			},
 			"hints": {
 				"checking_update": "更新を確認しています...",
-				"latest_version": "すでに最新バージョンです🎉",
-				"update_check_error": "更新中にエラーが発生しました。ネットワークを確認して再試行してください。",
-				"downloading_latest_package": "最新のインストールパッケージをダウンロード中...",
-				"download_complete_restart": "ダウンロードが完了しました。インストールを開始し、アプリを再起動します。"
-			}
-		},
-		"use_theme": {
-			"button": {
-				"confirm_reboot": "再起動",
-				"cancel": "キャンセル"
-			},
-			"hints": {
-				"reboot_confirm": "テーマを切り替えるには、appを再起動する必要があります！"
+				"latest_version": "すでに最新バージョンです🎉"
 			}
 		}
 	}

@@ -18,7 +18,11 @@
 					"window_position": "視窗位置",
 					"window_position_remember": "記住位置",
 					"window_position_follow": "跟隨滑鼠",
-					"window_position_center": "螢幕中央"
+					"window_position_center": "螢幕中央",
+					"back_top": "啟動時回到頂部"
+				},
+				"hints": {
+					"back_top": "啟動視窗時，滾動至頂部並選中首條"
 				}
 			},
 			"audio_settings": {
@@ -37,8 +41,8 @@
 					"position_bottom": "底部"
 				},
 				"hints": {
-					"default_focus": "每次打開視窗時，自動聚焦搜尋框",
-					"auto_clear": "每次打開視窗時，自動清除搜尋框內容"
+					"default_focus": "啟動視窗時，默認聚焦蒐索框",
+					"auto_clear": "啟動視窗時，清除蒐索框內容"
 				}
 			},
 			"content_settings": {
@@ -48,22 +52,24 @@
 					"auto_paste_single": "單擊",
 					"auto_paste_double": "雙擊",
 					"image_ocr": "圖片 OCR",
-					"copy_as_plain": "複製為純文字"
+					"copy_as_plain": "複製為純文字",
+					"paste_as_plain": "粘貼為純文字"
 				},
 				"hints": {
 					"auto_paste": "當使用滑鼠左鍵時，快速將內容貼上到輸入位置",
-					"image_ocr": "可暫時避免因系統 OCR 支援不足導致應用程式崩潰的問題，若為 Linux 用戶請自行下載",
-					"copy_as_plain": "富文本和 HTML 格式在複製時僅保留純文字內容"
+					"image_ocr": "注意：使用前請務必先下載",
+					"copy_as_plain": "富文字和HTML格式在複製時僅保留純文字內容",
+					"paste_as_plain": "富文字和 HTML 格式在粘貼時僅保留純文字內容"
 				}
 			}
 		},
 		"history": {
 			"history": {
-				"title": "歷史紀錄",
+				"title": "歷史記錄",
 				"button": {
-					"clear": "清除歷史紀錄",
-					"clear_confirm": "確認",
-					"clear_cancel": "取消"
+					"goto_delete": "刪除歷史記錄",
+					"confirm_delete": "確定",
+					"cancel_delete": "取消"
 				},
 				"label": {
 					"duration": "保留時長",
@@ -73,11 +79,21 @@
 						"month": "月",
 						"year": "年"
 					},
-					"clear_confirm_title": "清除歷史紀錄"
+					"delete_title": "刪除歷史記錄",
+					"time_range": "時間範圍",
+					"time_range_opt": {
+						"last_hour": "過去 1 小時",
+						"last_24_hours": "過去 24 小時",
+						"last_7_days": "過去 7 天",
+						"last_30_days": "過去 30 天",
+						"unlimited": "時間不限",
+						"custom": "自定義"
+					},
+					"include_favorite": "刪除收藏"
 				},
 				"hints": {
-					"duration": "輸入 0 表示永久保留",
-					"clear_confirm": "你確定要清除所有歷史紀錄（包括收藏）嗎？"
+					"duration": "輸入 0 表示永久保留，收藏在自動刪除時將保留",
+					"delete_success": "刪除成功"
 				}
 			}
 		},
@@ -105,7 +121,8 @@
 				"title": "應用設定",
 				"label": {
 					"auto_start": "登入時啟動",
-					"auto_update": "自動檢查更新"
+					"show_menubar_icon": "顯示功能表列圖標",
+					"show_taskbar_icon": "顯示工作列圖標"
 				}
 			},
 			"appearance_settings": {
@@ -116,6 +133,19 @@
 					"theme_auto": "跟隨系統",
 					"theme_light": "亮色模式",
 					"theme_dark": "暗色模式"
+				},
+				"hints": {
+					"theme": "注意：切換主題時，應用將會自動重啟"
+				}
+			},
+			"app_update": {
+				"title": "應用更新",
+				"label": {
+					"auto_update": "自動檢查更新",
+					"update_beta": "參與測試版體驗"
+				},
+				"hints": {
+					"update_beta": "將會接收測試版更新，即使它們可能不穩定"
 				}
 			}
 		},
@@ -124,32 +154,37 @@
 				"title": "快捷鍵",
 				"label": {
 					"open_clipboard": "打開剪貼簿視窗",
-					"open_settings": "打開偏好設定視窗"
+					"open_settings": "打開偏好設定視窗",
+					"quick_paste": "快速貼上",
+					"paste_as_plain": "貼上為純文字"
+				},
+				"hints": {
+					"quick_paste": "隱藏視窗時，使用數字鍵快速貼上前九項",
+					"paste_as_plain": "將內容貼上為純文字或 OCR 文本"
 				}
 			}
 		},
 		"data_backup": {
-			"import_export": {
-				"title": "匯入和匯出",
+			"storage_settings": {
+				"title": "存儲設定",
 				"label": {
-					"storage_dir": "儲存路徑",
-					"import_confirm_title": "匯入須知",
-					"export_confirm_title": "匯出須知"
-				},
-				"button": {
-					"open_dir": "打開目錄",
-					"import": "匯入資料",
-					"export": "匯出資料",
-					"confirm_export": "開始匯出",
-					"confirm": "確定",
-					"cancel": "取消"
+					"data_storage_path": "資料存儲路徑",
+					"log_storage_path": "日誌存儲路徑"
 				},
 				"hints": {
-					"import_confirm": "匯入的資料會完全覆蓋所有的偏好設定以及所有的剪貼簿歷史資料，你確定要匯入嗎？",
-					"export_confirm": "匯出的資料包含所有的偏好設定以及所有的剪貼簿歷史資料。",
-					"importing": "正在匯入",
-					"exporting": "正在匯出",
-					"import_success": "匯入成功"
+					"custom_path": "自訂",
+					"default_path": "恢復預設",
+					"change_success": "更改成功"
+				}
+			},
+			"import_export": {
+				"title": "導入和導出",
+				"button": {
+					"import": "導入數據",
+					"export": "導出數據"
+				},
+				"hints": {
+					"import_success": "導入成功"
 				}
 			}
 		},
@@ -180,11 +215,7 @@
 				"download_image": "下載圖片",
 				"show_in_finder": "在 Finder 中顯示",
 				"show_in_file_explorer": "在檔案總管中顯示",
-				"delete": "刪除",
-				"delete_above": "刪除上方",
-				"delete_below": "刪除下方",
-				"delete_other": "刪除其他",
-				"delete_all": "刪除所有"
+				"delete": "刪除"
 			}
 		},
 		"label": {
@@ -193,21 +224,20 @@
 				"text": "文字",
 				"image": "圖片",
 				"files": "文件",
-				"collection": "收藏"
+				"favorite": "收藏"
 			},
 			"link": "連結",
 			"email": "信箱",
 			"color": "顏色",
 			"plain_text": "純文字",
-			"rich_text": "富文字",
+			"rtf": "富文字",
 			"html": "HTML",
 			"image": "圖片",
 			"n_files": "{{0}}個檔案",
 			"n_chars": "{{0}}個字元"
 		},
 		"hints": {
-			"search_placeholder": "搜尋",
-			"delete_confirm": "確定刪除該歷史紀錄？"
+			"search_placeholder": "搜尋"
 		}
 	},
 	"component": {
@@ -230,19 +260,7 @@
 			},
 			"hints": {
 				"checking_update": "正在檢查更新...",
-				"latest_version": "當前已是最新版本🎉",
-				"update_check_error": "檢查更新時出錯，請檢查網路並重試。",
-				"downloading_latest_package": "正在下載最新的安裝包...",
-				"download_complete_restart": "下載完成，即將開始安裝並重新啟動應用。"
-			}
-		},
-		"use_theme": {
-			"button": {
-				"confirm_reboot": "重新啟動",
-				"cancel": "取消"
-			},
-			"hints": {
-				"reboot_confirm": "切換主題需要重新啟動應用才能生效！"
+				"latest_version": "當前已是最新版本🎉"
 			}
 		}
 	}

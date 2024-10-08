@@ -18,7 +18,11 @@
 					"window_position": "窗口位置",
 					"window_position_remember": "记住位置",
 					"window_position_follow": "跟随鼠标",
-					"window_position_center": "屏幕中心"
+					"window_position_center": "屏幕中心",
+					"back_top": "激活时回到顶部"
+				},
+				"hints": {
+					"back_top": "激活窗口时，滚动至顶部并选中首条"
 				}
 			},
 			"audio_settings": {
@@ -37,8 +41,8 @@
 					"position_bottom": "底部"
 				},
 				"hints": {
-					"default_focus": "每次打开窗口时，自动聚焦搜索框",
-					"auto_clear": "每次打开窗口时，自动清除搜索框内容"
+					"default_focus": "激活窗口时，默认聚焦搜索框",
+					"auto_clear": "激活窗口时，清除搜索框内容"
 				}
 			},
 			"content_settings": {
@@ -48,12 +52,14 @@
 					"auto_paste_single": "单击",
 					"auto_paste_double": "双击",
 					"image_ocr": "图片OCR",
-					"copy_as_plain": "复制为纯文本"
+					"copy_as_plain": "复制为纯文本",
+					"paste_as_plain": "粘贴为纯文本"
 				},
 				"hints": {
 					"auto_paste": "鼠标左键操作时，快速粘贴内容至输入位置",
-					"image_ocr": "可以暂时避免由于系统 OCR 支持不足导致应用崩溃的问题，如果是 linux 用户请自行下载",
-					"copy_as_plain": "富文本和 HTML 格式在复制时仅保留纯文本内容"
+					"image_ocr": "注意：使用前请务必先下载",
+					"copy_as_plain": "富文本和 HTML 格式在复制时仅保留纯文本内容",
+					"paste_as_plain": "富文本和 HTML 格式在粘贴时仅保留纯文本内容"
 				}
 			}
 		},
@@ -61,9 +67,9 @@
 			"history": {
 				"title": "历史记录",
 				"button": {
-					"clear": "清除历史记录",
-					"clear_confirm": "确定",
-					"clear_cancel": "取消"
+					"goto_delete": "删除历史记录",
+					"confirm_delete": "确定",
+					"cancel_delete": "取消"
 				},
 				"label": {
 					"duration": "保留时长",
@@ -73,11 +79,21 @@
 						"month": "月",
 						"year": "年"
 					},
-					"clear_confirm_title": "清除历史记录"
+					"delete_title": "删除历史记录",
+					"time_range": "时间范围",
+					"time_range_opt": {
+						"last_hour": "过去 1 小时",
+						"last_24_hours": "过去 24 小时",
+						"last_7_days": "过去 7 天",
+						"last_30_days": "过去 30 天",
+						"unlimited": "时间不限",
+						"custom": "自定义"
+					},
+					"include_favorite": "删除收藏"
 				},
 				"hints": {
-					"duration": "输入 0 则表示永久保留",
-					"clear_confirm": "你确定要清除所有历史记录（包括收藏）吗？"
+					"duration": "输入 0 则表示永久保留，自动删除时会保留收藏",
+					"delete_success": "删除成功"
 				}
 			}
 		},
@@ -105,7 +121,8 @@
 				"title": "应用设置",
 				"label": {
 					"auto_start": "登录时启动",
-					"auto_update": "自动检查更新"
+					"show_menubar_icon": "显示菜单栏图标",
+					"show_taskbar_icon": "显示任务栏图标"
 				}
 			},
 			"appearance_settings": {
@@ -116,6 +133,19 @@
 					"theme_auto": "跟随系统",
 					"theme_light": "亮色模式",
 					"theme_dark": "暗色模式"
+				},
+				"hints": {
+					"theme": "注意：切换主题时，应用将会自动重启"
+				}
+			},
+			"app_update": {
+				"title": "应用更新",
+				"label": {
+					"auto_update": "自动检查更新",
+					"update_beta": "参与测试版体验"
+				},
+				"hints": {
+					"update_beta": "将会接收测试版更新，即使它们可能不稳定"
 				}
 			}
 		},
@@ -124,31 +154,36 @@
 				"title": "快捷键",
 				"label": {
 					"open_clipboard": "打开剪贴板窗口",
-					"open_settings": "打开偏好设置窗口"
+					"open_settings": "打开偏好设置窗口",
+					"quick_paste": "快速粘贴",
+					"paste_as_plain": "粘贴为纯文本"
+				},
+				"hints": {
+					"quick_paste": "在隐藏窗口时，使用数字组合键快速粘贴前九项",
+					"paste_as_plain": "将内容粘贴为纯文本或 OCR 文本"
 				}
 			}
 		},
 		"data_backup": {
-			"import_export": {
-				"title": "导入和导出",
+			"storage_settings": {
+				"title": "存储设置",
 				"label": {
-					"storage_dir": "存储路径",
-					"import_confirm_title": "导入须知",
-					"export_confirm_title": "导出须知"
-				},
-				"button": {
-					"open_dir": "打开目录",
-					"import": "导入数据",
-					"export": "导出数据",
-					"confirm_export": "开始导出",
-					"confirm": "确定",
-					"cancel": "取消"
+					"data_storage_path": "数据存储路径",
+					"log_storage_path": "日志存储路径"
 				},
 				"hints": {
-					"import_confirm": "导入的数据会完全覆盖所有的偏好设置以及所有的剪贴板历史数据，你确定要导入吗？",
-					"export_confirm": "导出的数据包含所有的偏好设置以及所有的剪贴板历史数据。",
-					"importing": "正在导入",
-					"exporting": "正在导出",
+					"custom_path": "自定义",
+					"default_path": "恢复默认",
+					"change_success": "更改成功"
+				}
+			},
+			"import_export": {
+				"title": "导入和导出",
+				"button": {
+					"import": "导入数据",
+					"export": "导出数据"
+				},
+				"hints": {
 					"import_success": "导入成功"
 				}
 			}
@@ -180,11 +215,7 @@
 				"download_image": "下载图片",
 				"show_in_finder": "在 Finder 中显示",
 				"show_in_file_explorer": "在文件资源管理器中显示",
-				"delete": "删除",
-				"delete_above": "删除上方",
-				"delete_below": "删除下方",
-				"delete_other": "删除其它",
-				"delete_all": "删除所有"
+				"delete": "删除"
 			}
 		},
 		"label": {
@@ -193,21 +224,20 @@
 				"text": "文本",
 				"image": "图片",
 				"files": "文件",
-				"collection": "收藏"
+				"favorite": "收藏"
 			},
 			"link": "链接",
 			"email": "邮箱",
 			"color": "颜色",
 			"plain_text": "纯文本",
-			"rich_text": "富文本",
+			"rtf": "富文本",
 			"html": "HTML",
 			"image": "图片",
 			"n_files": "{{0}}个文件（夹）",
 			"n_chars": "{{0}}个字符"
 		},
 		"hints": {
-			"search_placeholder": "搜索",
-			"delete_confirm": "确定删除该历史记录？"
+			"search_placeholder": "搜索"
 		}
 	},
 	"component": {
@@ -230,19 +260,7 @@
 			},
 			"hints": {
 				"checking_update": "正在检查更新...",
-				"latest_version": "当前已是最新版本🎉",
-				"update_check_error": "检查更新时出错，请检查网络并重试。",
-				"downloading_latest_package": "正在下载最新的安装包...",
-				"download_complete_restart": "下载完成，即将开始安装并重启应用。"
-			}
-		},
-		"use_theme": {
-			"button": {
-				"confirm_reboot": "重启",
-				"cancel": "取消"
-			},
-			"hints": {
-				"reboot_confirm": "切换主题需要重启 app 才能生效！"
+				"latest_version": "当前已是最新版本🎉"
 			}
 		}
 	}

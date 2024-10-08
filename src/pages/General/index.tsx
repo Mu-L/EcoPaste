@@ -6,7 +6,7 @@ import MacosPermissions from "./components/MacosPermissions";
 import ThemeMode from "./components/ThemeMode";
 
 const General = () => {
-	const { app } = useSnapshot(globalStore);
+	const { app, update } = useSnapshot(globalStore);
 	const { t } = useTranslation();
 
 	return (
@@ -23,10 +23,18 @@ const General = () => {
 				/>
 
 				<ProSwitch
-					title={t("preference.settings.app_settings.label.auto_update")}
-					value={app.autoUpdate}
+					title={t("preference.settings.app_settings.label.show_menubar_icon")}
+					value={app.showMenubarIcon}
 					onChange={(value) => {
-						globalStore.app.autoUpdate = value;
+						globalStore.app.showMenubarIcon = value;
+					}}
+				/>
+
+				<ProSwitch
+					title={t("preference.settings.app_settings.label.show_taskbar_icon")}
+					value={app.showTaskbarIcon}
+					onChange={(value) => {
+						globalStore.app.showTaskbarIcon = value;
 					}}
 				/>
 			</ProList>
@@ -35,6 +43,25 @@ const General = () => {
 				<Language />
 
 				<ThemeMode />
+			</ProList>
+
+			<ProList header={t("preference.settings.app_update.title")}>
+				<ProSwitch
+					title={t("preference.settings.app_update.label.auto_update")}
+					value={update.auto}
+					onChange={(value) => {
+						globalStore.update.auto = value;
+					}}
+				/>
+
+				<ProSwitch
+					title={t("preference.settings.app_update.label.update_beta")}
+					description={t("preference.settings.app_update.hints.update_beta")}
+					value={update.beta}
+					onChange={(value) => {
+						globalStore.update.beta = value;
+					}}
+				/>
 			</ProList>
 		</>
 	);

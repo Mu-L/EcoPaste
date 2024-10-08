@@ -18,7 +18,11 @@
 					"window_position": "Window Position",
 					"window_position_remember": "Remember Position",
 					"window_position_follow": "Follow Mouse Cursor",
-					"window_position_center": "Center on Screen"
+					"window_position_center": "Center on Screen",
+					"back_top": "Back to top when activated"
+				},
+				"hints": {
+					"back_top": "When the window is activated, scroll to the top and check the first item"
 				}
 			},
 			"audio_settings": {
@@ -37,8 +41,8 @@
 					"position_bottom": "Bottom"
 				},
 				"hints": {
-					"default_focus": "Automatically focus on the search box when the window opens",
-					"auto_clear": "Automatically clear the search box when the window opens"
+					"default_focus": "Focuses the search box by default when the window is activated",
+					"auto_clear": "Clear search box contents when window is activated"
 				}
 			},
 			"content_settings": {
@@ -48,12 +52,14 @@
 					"auto_paste_single": "Single Click",
 					"auto_paste_double": "Double Click",
 					"image_ocr": "Image OCR",
-					"copy_as_plain": "Copy as Plain Text"
+					"copy_as_plain": "Copy as Plain Text",
+					"paste_as_plain": "Paste as Plain Text"
 				},
 				"hints": {
 					"auto_paste": "Quickly paste content to the input field when using the left mouse button",
-					"image_ocr": "Helps prevent crashes due to insufficient system OCR support; Linux users may need to download separately",
-					"copy_as_plain": "Only retains plain text content when copying rich text or HTML formats"
+					"image_ocr": "Note: Please be sure to download the",
+					"copy_as_plain": "Rich text and HTML formats retain only plain text content when copied",
+					"paste_as_plain": "Rich text and HTML formatting retains only plain text content when pasting"
 				}
 			}
 		},
@@ -61,9 +67,9 @@
 			"history": {
 				"title": "History",
 				"button": {
-					"clear": "Clear History",
-					"clear_confirm": "Confirm",
-					"clear_cancel": "Cancel"
+					"goto_delete": "Delete History",
+					"confirm_delete": "Confirm",
+					"cancel_delete": "Cancel"
 				},
 				"label": {
 					"duration": "Retention Duration",
@@ -73,11 +79,21 @@
 						"month": "Month",
 						"year": "Year"
 					},
-					"clear_confirm_title": "Clear History"
+					"delete_title": "Delete History",
+					"time_range": "Time Range",
+					"time_range_opt": {
+						"last_hour": "Last 1 Hour",
+						"last_24_hours": "Last 24 Hours",
+						"last_7_days": "Last 7 Days",
+						"last_30_days": "Last 30 Days",
+						"unlimited": "Unlimited",
+						"custom": "Custom"
+					},
+					"include_favorite": "Delete Favorites"
 				},
 				"hints": {
-					"duration": "Enter 0 to keep forever",
-					"clear_confirm": "Are you sure you want to clear all history (including favorites)?"
+					"duration": "Enter 0 to keep permanently, favorites will be retained when auto-deleting",
+					"delete_success": "Successfully Deleted"
 				}
 			}
 		},
@@ -105,17 +121,31 @@
 				"title": "App Settings",
 				"label": {
 					"auto_start": "Start at Login",
-					"auto_update": "Auto Check for Updates"
+					"show_menubar_icon": "Show Menubar Icon",
+					"show_taskbar_icon": "Show Taskbar Icon"
 				}
 			},
 			"appearance_settings": {
 				"title": "Appearance Settings",
 				"label": {
 					"language": "Language",
-					"theme": "Theme Mode",
+					"theme": "Theme",
 					"theme_auto": "System",
 					"theme_light": "Light",
 					"theme_dark": "Dark"
+				},
+				"hints": {
+					"theme": "Note: The app will restart automatically when switching themes"
+				}
+			},
+			"app_update": {
+				"title": "App Update",
+				"label": {
+					"auto_update": "Auto check for updates",
+					"update_beta": "Participate in the beta experience"
+				},
+				"hints": {
+					"update_beta": "Will receive beta updates, even if they may be unstable"
 				}
 			}
 		},
@@ -124,31 +154,36 @@
 				"title": "Shortcuts",
 				"label": {
 					"open_clipboard": "Open Clipboard Window",
-					"open_settings": "Open Preferences Window"
+					"open_settings": "Open Preferences Window",
+					"quick_paste": "Quick Paste",
+					"paste_as_plain": "Paste as Plain Text"
+				},
+				"hints": {
+					"quick_paste": "Use number key combos to quickly paste top 9 items when window is hidden",
+					"paste_as_plain": "Paste content as plain text or OCR text"
 				}
 			}
 		},
 		"data_backup": {
-			"import_export": {
-				"title": "Import / Export",
+			"storage_settings": {
+				"title": "Storage Settings",
 				"label": {
-					"storage_dir": "Storage Directory",
-					"import_confirm_title": "Import Notice",
-					"export_confirm_title": "Export Notice"
-				},
-				"button": {
-					"open_dir": "Open",
-					"import": "Import",
-					"export": "Export",
-					"confirm_export": "Start",
-					"confirm": "Ok",
-					"cancel": "Cancel"
+					"data_storage_path": "Data Storage Path",
+					"log_storage_path": "Log Storage Path"
 				},
 				"hints": {
-					"import_confirm": "Imported data will completely overwrite all preferences and clipboard history. Are you sure you want to import?",
-					"export_confirm": "Exported data includes all preferences and clipboard history.",
-					"importing": "Importing",
-					"exporting": "Exporting",
+					"custom_path": "Custom",
+					"default_path": "Restore Default",
+					"change_success": "Changed successfully"
+				}
+			},
+			"import_export": {
+				"title": "Import / Export",
+				"button": {
+					"import": "Import",
+					"export": "Export"
+				},
+				"hints": {
 					"import_success": "Import Successful"
 				}
 			}
@@ -180,11 +215,7 @@
 				"download_image": "Download Image",
 				"show_in_finder": "Show in Finder",
 				"show_in_file_explorer": "Show in File Explorer",
-				"delete": "Delete",
-				"delete_above": "Delete Above",
-				"delete_below": "Delete Below",
-				"delete_other": "Delete Others",
-				"delete_all": "Delete All"
+				"delete": "Delete"
 			}
 		},
 		"label": {
@@ -193,21 +224,20 @@
 				"text": "Text",
 				"image": "Image",
 				"files": "File",
-				"collection": "Favorite"
+				"favorite": "Favorite"
 			},
 			"link": "Link",
 			"email": "Email",
 			"color": "Color",
 			"plain_text": "Plain Text",
-			"rich_text": "Rich Text",
+			"rtf": "Rich Text",
 			"html": "HTML",
 			"image": "Image",
 			"n_files": "{{0}} File(s)",
 			"n_chars": "{{0}} Character(s)"
 		},
 		"hints": {
-			"search_placeholder": "Search...",
-			"delete_confirm": "Are you sure you want to delete this item?"
+			"search_placeholder": "Search..."
 		}
 	},
 	"component": {
@@ -230,19 +260,7 @@
 			},
 			"hints": {
 				"checking_update": "Checking for updates...",
-				"latest_version": "You are using the latest version 🎉",
-				"update_check_error": "An error occurred while checking for updates Please check your network connection and try again.",
-				"downloading_latest_package": "Downloading the latest package...",
-				"download_complete_restart": "Download completed. Restart the application to apply the update."
-			}
-		},
-		"use_theme": {
-			"button": {
-				"confirm_reboot": "Reboot",
-				"cancel": "Cancel"
-			},
-			"hints": {
-				"reboot_confirm": "Switching themes requires a reboot to take effect!"
+				"latest_version": "You are using the latest version 🎉"
 			}
 		}
 	}
